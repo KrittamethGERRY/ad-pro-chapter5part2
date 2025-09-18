@@ -11,8 +11,7 @@ import se233.chapter5part22.model.Food;
 import se233.chapter5part22.model.Snake;
 import se233.chapter5part22.view.GameStage;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -44,6 +43,14 @@ public class GameLoopTest {
     }
     @Test
     public void collided_snakeEatFood_shouldGrow() throws Exception {
+        clockTickHelper();
+        assertTrue(snake.getLength() > 1);
+        clockTickHelper();
+        assertNotSame(food.getPosition(), new Point2D(0,1));
+    }
+
+
+    @Test void collided_snakeHitBorder_shouldDie() throws Exception {
         ReflectionHelper.setField(gameStage, "key", KeyCode.LEFT);
         clockTickHelper();
         Boolean running = (Boolean) ReflectionHelper.getField(gameLoop, "running");

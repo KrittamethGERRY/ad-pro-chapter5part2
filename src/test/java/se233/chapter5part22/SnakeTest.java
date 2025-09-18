@@ -29,6 +29,14 @@ public class SnakeTest {
     }
 
     @Test
+    public void checkDead_ifHitGameBorder_snakeWillDie() {
+        snake = new Snake(new Point2D(30,30));
+        snake.setDirection(Direction.RIGHT);
+        snake.move();
+        assertTrue(snake.checkDead());
+    }
+
+    @Test
     public void grow_shouldIncreaseLengthByOne() {
         snake.grow();
         assertEquals(snake.getLength(), 2);

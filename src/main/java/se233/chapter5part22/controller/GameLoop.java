@@ -38,6 +38,7 @@ public class GameLoop implements Runnable {
             snake.grow();
             food.respawn();
         }
+        if (snake.checkDead()) { running = false; }
     }
     public void redraw() {
         gameStage.render(snake, food);
