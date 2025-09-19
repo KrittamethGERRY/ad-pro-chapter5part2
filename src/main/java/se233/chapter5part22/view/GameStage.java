@@ -22,7 +22,7 @@ public class GameStage extends Pane {
         this.getChildren().add(canvas);
     }
 
-    public void render(Snake snake, Food food) {
+    public void render(Snake snake, Food food, Food specialFood) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0,0,WIDTH * TILE_SIZE,HEIGHT * TILE_SIZE);
         gc.setFill(Color.BLUE);
@@ -31,6 +31,9 @@ public class GameStage extends Pane {
         });
         gc.setFill(Color.RED);
         gc.fillRect(food.getPosition().getX() * TILE_SIZE, food.getPosition().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+
+        gc.setFill(Color.GREEN);
+        gc.fillRect(specialFood.getPosition().getX() * TILE_SIZE, specialFood.getPosition().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
     public KeyCode getKey() {

@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 public class FoodTest {
     private Food food;
+    private Food specialFood;
 
     @BeforeEach
     public void setup() {
-        food = new Food(new Point2D(0,0));
+        food = new Food(new Point2D(0,0), 1);
+        specialFood = new Food(new Point2D(1,1), 5);
     }
 
     @Test

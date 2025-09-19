@@ -50,7 +50,7 @@ public class SnakeTest {
     }
     @Test
     public void collided_withSnake_shouldBeDetected() {
-        Food food = new Food(new Point2D(0,0));
+        Food food = new Food(new Point2D(0,0), 1);
         assertTrue(snake.collided(food));
     }
     @Test

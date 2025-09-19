@@ -1,12 +1,16 @@
 package se233.chapter5part22.model;
 
 import javafx.geometry.Point2D;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import se233.chapter5part22.view.GameStage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Snake {
+    private final static Logger logger = LogManager.getLogger(Snake.class);
+
     private Direction direction;
     private Point2D head;
     private Point2D prev_tail;
@@ -49,5 +53,12 @@ public class Snake {
     }
     public List<Point2D> getBody() {
         return body;
+    }
+
+    public void setPosition(Point2D position) {
+        this.head = position;
+    }
+    public void trace() {
+        logger.debug("Current position: {}", head);
     }
 }
