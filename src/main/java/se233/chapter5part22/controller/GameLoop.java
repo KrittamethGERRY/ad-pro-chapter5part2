@@ -61,7 +61,9 @@ public class GameLoop implements Runnable {
             food.respawn();
         }
         if (snake.collided(specialFood)) {
-            snake.grow();
+            for (int i = 0; i < specialFood.getPoint(); i++) {
+                snake.grow();
+            }
             score+= specialFood.getPoint();
             System.out.println("Score = " + score);
             specialFood.respawn();
@@ -73,7 +75,7 @@ public class GameLoop implements Runnable {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Game Over");
                 alert.setHeaderText("Game Over");
-                alert.setContentText("You're dead");
+                alert.setContentText("Score: "  + score);
                 alert.showAndWait();
                 if (alert.getResult() == ButtonType.OK) {
                     try {
@@ -86,7 +88,6 @@ public class GameLoop implements Runnable {
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-
                 } else {
                     Platform.exit();
                 }
